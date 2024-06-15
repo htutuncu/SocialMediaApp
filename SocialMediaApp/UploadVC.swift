@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseCore
 import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -35,6 +37,13 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         self.dismiss(animated: true, completion: nil)
     }
     
+    func makeAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okBtn = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okBtn)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func postBtn(_ sender: Any) {
         let storage = Storage.storage()
         let referance = storage.reference()
@@ -42,19 +51,41 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let mediaFolder = referance.child("media")
         
         if let data = imageView.image?.jpegData(compressionQuality: 0.5) {
-            let imgReference = mediaFolder.child("image.jpg")
+            let uuid = UUID().uuidString
+            let imgReference = mediaFolder.child("img\(uuid).jpg")
             imgReference.putData(data, metadata: nil) { (metadata, error) in
                 if error != nil {
-                    print(error?.localizedDescription ?? "Error upload.")
+                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
                 } else {
                     imgReference.downloadURL { url, error in
                         if error == nil {
                             let imgUrl = url?.absoluteString
-                            print(imgUrl)
+                            
+                            // Save to database.
+                            
+                            let firestoreDatabase = Firestore.firestore()
+                            
+                            var firestoreReference : DocumentReference? = nil
+                            
+                            let firestorePost = ["imgUrl": imgUrl!, "postedBy" : Auth.auth().currentUser!.email!, "postDescription" : self.postTextField.text!, "date" : FieldValue.serverTimestamp(), "likes" : 0] as [String: Any]
+                            
+                            firestoreReference = firestoreDatabase.collection("Posts").addDocument(data: firestorePost, completion: { error in
+                                if error != nil {
+                                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
+                                } else {
+                                    self.goToHomePageAndReset()
+                                }
+                            })
                         }
                     }
                 }
             }
         }
+    }
+    
+    func goToHomePageAndReset() {
+        self.imageView.image = UIImage(named: "selectimage")
+        self.postTextField.text = ""
+        self.tabBarController?.selectedIndex = 0
     }
 }
