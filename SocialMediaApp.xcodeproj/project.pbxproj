@@ -18,6 +18,7 @@
 		CFE481112C1CC41900BF797F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE481102C1CC41900BF797F /* Assets.xcassets */; };
 		CFE481142C1CC41900BF797F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CFE481132C1CC41900BF797F /* Base */; };
 		CFE4811C2C1CC47900BF797F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFE4811B2C1CC47900BF797F /* GoogleService-Info.plist */; };
+		CFF88CD42C1D8EB000EB8559 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF88CD32C1D8EB000EB8559 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CFE481132C1CC41900BF797F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFE481152C1CC41900BF797F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFE4811B2C1CC47900BF797F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CFF88CD32C1D8EB000EB8559 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				CF2962672C1CD5EB0042F051 /* FeedVC.swift */,
 				CF2962692C1CD5FD0042F051 /* UploadVC.swift */,
 				CF29626B2C1CD6090042F051 /* SettingsVC.swift */,
+				CFF88CD32C1D8EB000EB8559 /* PostCell.swift */,
 				CFE4810D2C1CC41800BF797F /* Main.storyboard */,
 				CFE481102C1CC41900BF797F /* Assets.xcassets */,
 				CFE481122C1CC41900BF797F /* LaunchScreen.storyboard */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFF88CD42C1D8EB000EB8559 /* PostCell.swift in Sources */,
 				CF2962682C1CD5EB0042F051 /* FeedVC.swift in Sources */,
 				CFE4810C2C1CC41800BF797F /* ViewController.swift in Sources */,
 				CFE481082C1CC41800BF797F /* AppDelegate.swift in Sources */,
