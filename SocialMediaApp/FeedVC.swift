@@ -14,6 +14,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var postDescArray = [String]()
     var likeArray = [Int]()
     var imageArray = [String]()
+    var documentIdArray = [String]()
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func fetchData() {
         let firestoreDatabase = Firestore.firestore()
         
-        firestoreDatabase.collection("Posts").getDocuments { (querySnapshot, error) in
+        firestoreDatabase.collection("Posts").order(by: "date", descending: true).addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 print("Hata: \(error.localizedDescription)")
                 return
@@ -42,8 +44,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.likeArray.removeAll(keepingCapacity: false)
             self.postDescArray.removeAll(keepingCapacity: false)
             self.userNameArray.removeAll(keepingCapacity: false)
+            self.documentIdArray.removeAll(keepingCapacity: false)
             
             for doc in querySnapshot.documents {
+                let documentID = doc.documentID
+                self.documentIdArray.append(documentID)
                 if let url = doc["imgUrl"] as? String {
                     self.imageArray.append(url)
                 }
@@ -70,7 +75,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.configure(userName: self.userNameArray[indexPath.row],
                        postImageUrl: self.imageArray[indexPath.row],
                        postDesc: self.postDescArray[indexPath.row],
-                       likes: "Likes: \(self.likeArray[indexPath.row])")
+                       likes: "\(self.likeArray[indexPath.row])",
+                       documentID: self.documentIdArray[indexPath.row]
+        )
         return cell
     }
     
