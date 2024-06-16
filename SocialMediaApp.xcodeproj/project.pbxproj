@@ -11,6 +11,7 @@
 		CF2962682C1CD5EB0042F051 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2962672C1CD5EB0042F051 /* FeedVC.swift */; };
 		CF29626A2C1CD5FD0042F051 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2962692C1CD5FD0042F051 /* UploadVC.swift */; };
 		CF29626C2C1CD6090042F051 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29626B2C1CD6090042F051 /* SettingsVC.swift */; };
+		CF5A87DF2C1F2D5F001D86AB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A87DE2C1F2D5F001D86AB /* Post.swift */; };
 		CFE481082C1CC41800BF797F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE481072C1CC41800BF797F /* AppDelegate.swift */; };
 		CFE4810A2C1CC41800BF797F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE481092C1CC41800BF797F /* SceneDelegate.swift */; };
 		CFE4810C2C1CC41800BF797F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4810B2C1CC41800BF797F /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		CF2962672C1CD5EB0042F051 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		CF2962692C1CD5FD0042F051 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		CF29626B2C1CD6090042F051 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		CF5A87DE2C1F2D5F001D86AB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CFE481042C1CC41800BF797F /* SocialMediaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMediaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE481072C1CC41800BF797F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFE481092C1CC41800BF797F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				CFE481122C1CC41900BF797F /* LaunchScreen.storyboard */,
 				CFE481152C1CC41900BF797F /* Info.plist */,
 				CFE4811B2C1CC47900BF797F /* GoogleService-Info.plist */,
+				CF5A87DE2C1F2D5F001D86AB /* Post.swift */,
 			);
 			path = SocialMediaApp;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				CFF88CD42C1D8EB000EB8559 /* PostCell.swift in Sources */,
 				CF2962682C1CD5EB0042F051 /* FeedVC.swift in Sources */,
 				CFE4810C2C1CC41800BF797F /* ViewController.swift in Sources */,
+				CF5A87DF2C1F2D5F001D86AB /* Post.swift in Sources */,
 				CFE481082C1CC41800BF797F /* AppDelegate.swift in Sources */,
 				CF29626A2C1CD5FD0042F051 /* UploadVC.swift in Sources */,
 				CFE4810A2C1CC41800BF797F /* SceneDelegate.swift in Sources */,

@@ -28,12 +28,12 @@ class PostCell: UITableViewCell {
         postImageView.addGestureRecognizer(gestureRecognizer)
     }
     
-    func configure(userName: String, postImageUrl: String, postDesc: String, likes: String, documentID: String) {
-        userNameLabel.text = userName
-        descriptionLabel.text = postDesc
-        likesLabel.text = likes
-        postImageView.sd_setImage(with: URL(string: postImageUrl), placeholderImage: UIImage(named: "selectimage"))
-        self.documentID = documentID
+    func configure(post: Post) {
+        userNameLabel.text = post.userName
+        descriptionLabel.text = post.postDescription
+        likesLabel.text = String(post.likes)
+        postImageView.sd_setImage(with: URL(string: post.imageUrl), placeholderImage: UIImage(named: "selectimage"))
+        self.documentID = post.documentId
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,7 +47,6 @@ class PostCell: UITableViewCell {
     @objc func likePost() {
         let firestore = Firestore.firestore()
         if let likeCount = Int(likesLabel.text!) {
-            print(self.documentID)
             let likeStore = ["likes" : likeCount + 1] as [String : Any]
             firestore.collection("Posts").document(self.documentID).setData(likeStore, merge: true)
         }
