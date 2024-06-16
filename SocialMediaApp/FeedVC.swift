@@ -10,11 +10,7 @@ import FirebaseCore
 import FirebaseFirestore
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var userNameArray = [String]()
-    var postDescArray = [String]()
-    var likeArray = [Int]()
-    var imageArray = [String]()
-    var documentIdArray = [String]()
+    var posts = [Post]()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -40,44 +36,37 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            self.imageArray.removeAll(keepingCapacity: false)
-            self.likeArray.removeAll(keepingCapacity: false)
-            self.postDescArray.removeAll(keepingCapacity: false)
-            self.userNameArray.removeAll(keepingCapacity: false)
-            self.documentIdArray.removeAll(keepingCapacity: false)
+            self.posts.removeAll(keepingCapacity: false)
             
             for doc in querySnapshot.documents {
+                var post = Post()
                 let documentID = doc.documentID
-                self.documentIdArray.append(documentID)
+                post.documentId = documentID
                 if let url = doc["imgUrl"] as? String {
-                    self.imageArray.append(url)
+                    post.imageUrl = url
                 }
                 if let postedBy = doc.get("postedBy") as? String {
-                    self.userNameArray.append(postedBy)
+                    post.userName = postedBy
                 }
                 if let postDesc = doc.get("postDescription") as? String {
-                    self.postDescArray.append(postDesc)
+                    post.postDescription = postDesc
                 }
                 if let likes = doc.get("likes") as? Int {
-                    self.likeArray.append(likes)
+                    post.likes = likes
                 }
+                self.posts.append(post)
             }
             self.tableView.reloadData()
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userNameArray.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PostCell
-        cell.configure(userName: self.userNameArray[indexPath.row],
-                       postImageUrl: self.imageArray[indexPath.row],
-                       postDesc: self.postDescArray[indexPath.row],
-                       likes: "\(self.likeArray[indexPath.row])",
-                       documentID: self.documentIdArray[indexPath.row]
-        )
+        cell.configure(post: posts[indexPath.row])
         return cell
     }
     
