@@ -17,13 +17,13 @@ Here are some screenshots of the app:
 
 ### Login and Home Screens
 <p float="left">
-  <img src="./Screenshots/login.png" width="300">
+  <img src="./Screenshots/login.png" width="300" style="margin-right: 20px;">
   <img src="./Screenshots/feed.png" width="300">
 </p>
 
 ### Create Post and Settings (Logout) Screens
 <p float="left">
-  <img src="./Screenshots/newPost.png" width="300">
+  <img src="./Screenshots/newPost.png" width="300" style="margin-right: 20px;">
   <img src="./Screenshots/logout.png" width="300"> 
 </p>
 
